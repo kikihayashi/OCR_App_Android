@@ -43,10 +43,6 @@ build.grade(Module.app)
 
 AndroidManifest
 ---
-    <?xml version="1.0" encoding="utf-8"?>
-    <manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="com.wood.ocr_android">
 
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
@@ -56,11 +52,9 @@ AndroidManifest
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:allowBackup="true"
-        android:icon="@drawable/ocr"
-        android:label="@string/app_name"
-        android:roundIcon="@drawable/ocr"
-        android:supportsRtl="true"
+         .
+         .
+         .
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <activity android:name="com.wood.ocr_android.CameraActivity"
