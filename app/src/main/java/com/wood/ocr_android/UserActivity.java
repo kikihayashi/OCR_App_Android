@@ -35,30 +35,29 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //開啟全螢幕
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);//設定隱藏APP標題
+        //關閉最上面的狀態bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                                  WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //關閉APP標題bar
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_user);
 
-        editText = findViewById(R.id.editText);
+        Intent get_Camera_Intent = this.getIntent();//取得CameraActivity傳遞過來的Intent
+        Uri uri_camera = get_Camera_Intent.getParcelableExtra("Uri");//取得Intent裡的uri_camera
 
-        Intent get_Camera_Intent = this.getIntent();//取得傳遞過來的Intent
-        Uri uri_camera = get_Camera_Intent.getParcelableExtra("Uri");//取得uri_camera
-
-        if(uri_camera!=null)//如果uri_camera有資料
+        if(uri_camera != null)//如果uri_camera有資料
         {
             ocr = new Ocr(uri_camera, getApplicationContext());//建立Ocr物件
             textDisplay = ocr.getImageString();//得到照片文字
         }
 
+        editText = findViewById(R.id.editText);
         editText.setText(textDisplay);//將照片文字設置在editText上
-        //設置為不可編輯editText
-        editText.setFocusableInTouchMode(false);
-        editText.setFocusable(false);
+        editText.setFocusable(false);//設置不可編輯editText，此指令會自動讓editText.setFocusableInTouchMode(false);
     }
 
-    //按鈕區---------------------------------------------------------------------------------------
+    //按鈕邏輯---------------------------------------------------------------------------------------
     public void restartCamera(View view)//重新拍照
     {
         //建立一個temp_intent物件，new Intent(放當前類別, 放要跳轉的類別.class)
@@ -92,9 +91,7 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
         toolDialog.setCanceledOnTouchOutside(true);//設定碰到Dialog範圍以外，是否結束Dialog
     }
 
-    //---------------------------------------------------------------------------------------
-
-    //實作MyAdapter.RecyclerViewItemClickListener介面裡的clickOnItem抽象方法
+    //實作MyAdapter.RecyclerViewItemClickListener介面裡的clickOnItem抽象方法--------------------------
     @Override
     public void clickOnItem(int dataIndex)//點按tool執行以下東西
     {
@@ -112,8 +109,8 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
                 break;
 
             case 1://允許編輯EditText
-                editText.setFocusableInTouchMode(true);
                 editText.setFocusable(true);
+                editText.setFocusableInTouchMode(true);
                 editText.requestFocus();
                 break;
 

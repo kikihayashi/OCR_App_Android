@@ -29,6 +29,7 @@ public class Ocr extends Application {
         str = bitmapToString(rotatedBitmap,context);
     }
 
+    //將Uri物件轉成Bitmap物件
     private Bitmap uriToFixBitmap(Uri imageUri)
     {
         try
@@ -67,6 +68,7 @@ public class Ocr extends Application {
         return rotatedBitmap;
     }
 
+    //調整Bitmap被旋轉問題
     private static Bitmap rotateImage(Bitmap source, float angle)
     {
         Matrix matrix = new Matrix();//使用Matrix物件
@@ -75,6 +77,7 @@ public class Ocr extends Application {
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),matrix, true);
     }
 
+    //辨識Bitmap並轉成String
     private String bitmapToString(Bitmap bitmap,Context context)
     {
         String b_str = null;

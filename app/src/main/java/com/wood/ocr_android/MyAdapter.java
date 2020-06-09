@@ -30,18 +30,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
         private ImageView tool_IV;
         private CardView tool_CV;
 
-        public MyViewHolder(View v)//在MyViewHolder內定義每個list cell上會有的view components(定義一列有幾項)
+        public MyViewHolder(View v)//定義RecyclerView上的view
         {
             super(v);
-
             tool_TV = v.findViewById(R.id.toolTextView);
             tool_IV = v.findViewById(R.id.toolImageView);
             tool_CV = v.findViewById(R.id.toolCardView);
-
             v.setOnClickListener(this);
         }
 
-        public void setData(ToolLayoutModel tool_Model)
+        public void setData(ToolLayoutModel tool_Model)//將tool_Model的資料設置到tool_item.xml裡的TextView、ImageView上
         {
             tool_TV.setText(tool_Model.text);
             tool_IV.setImageResource(tool_Model.drawable);
@@ -49,7 +47,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
         }
 
         @Override
-        public void onClick(View v)//Dialog中每個item被點擊時，執行動作寫在此處
+        public void onClick(View v)//Dialog中每個item被點擊時，要執行的動作寫在此處
         {
             recyclerViewItemClickListener.clickOnItem(this.getAdapterPosition());
         }
@@ -76,7 +74,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
     }
 
     @Override
-    //看總共有幾筆資料
+    //RecyclerView總共有幾筆(組)資料
     public int getItemCount()
     {
         return toolModelList.size();
