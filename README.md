@@ -2,6 +2,11 @@ OCR_App_Android
 ===
 利用Mobile Vision Text API實現OCR功能
 
+About APP
+---
+**最低需求**：API 19 (Android 4.4)\
+**測試機種**：SAMSUNG GALAXY A5 (Android 6.0.1)
+
 build.grade(Project:OCR_Android)
 ---
     buildscript {
