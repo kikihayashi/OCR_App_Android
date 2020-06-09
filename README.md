@@ -44,9 +44,6 @@ build.grade(Module.app)
 
 AndroidManifest
 ---
-         .
-         .
-         .  
     package="com.wood.ocr_android">
 
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
@@ -69,10 +66,7 @@ AndroidManifest
 
         <activity android:name="com.wood.ocr_android.UserActivity"
                    android:screenOrientation="portrait">
-        </activity>
-          .
-          .
-          .        
+        </activity>     
           
 + 設置`android:screenOrientation="portrait"`時，可能會出現錯誤。需到File的Settings，左上角搜尋"Chrome OS"，將`Activity is locked to an orientation` (兩個)取消勾選。
 
