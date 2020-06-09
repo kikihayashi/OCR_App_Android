@@ -5,7 +5,7 @@ OCR_App_Android
 About APP
 ---
 **最低需求：** API 19 (Android 4.4)\
-**測試機種：**SAMSUNG GALAXY A5 (Android 6.0.1)\
+**測試機種：** SAMSUNG GALAXY A5 (Android 6.0.1)\
 **可識別文字：**\
 https://developers.google.com/vision/android/text-overview#recognized_languages
 
@@ -73,6 +73,8 @@ AndroidManifest
         </activity>
     </application>
     </manifest>
+
++ 設置android:screenOrientation="portrait"時，可能會出現錯誤。需到File的Settings，左上角搜尋"Chrome OS"，將Activity is locked to an orientation(有兩個)取消勾選。
 
 Class
 ---
