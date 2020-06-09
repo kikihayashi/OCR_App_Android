@@ -25,7 +25,7 @@ import java.util.Calendar;
 //UserActivity繼承AppCompatActivity實作MyAdapter.RecyclerViewItemClickListener介面
 public class UserActivity extends AppCompatActivity implements MyAdapter.RecyclerViewItemClickListener {
 
-    private int i = 0;
+    private int i;
     private Ocr ocr;
     private EditText editText;
     private String textDisplay = "文字顯示區";
