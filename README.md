@@ -33,6 +33,10 @@ build.grade(Project:OCR_Android)
 
 build.grade(Module.app)
 ---
+    dependencies {
+     .
+     .
+     .
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.google.android.gms:play-services-vision:20.0.0'
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
