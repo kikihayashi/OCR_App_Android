@@ -53,9 +53,9 @@ AndroidManifest
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-         .
-         .
-         .
+        .
+        .
+        .
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name="com.wood.ocr_android.CameraActivity">
             <intent-filter>
