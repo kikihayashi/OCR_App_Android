@@ -1,1 +1,1 @@
-# OCR_Android
+# OCR_App_Android
