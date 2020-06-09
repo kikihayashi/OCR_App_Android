@@ -34,15 +34,19 @@ build.grade(Project:OCR_Android)
 build.grade(Module.app)
 ---
     dependencies {
-       .
-       .
-       .
+        .
+        .
+        .
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.google.android.gms:play-services-vision:20.0.0'
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
+    
 
 AndroidManifest
 ---
+         .
+         .
+         .  
     package="com.wood.ocr_android">
 
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
@@ -56,9 +60,7 @@ AndroidManifest
          .
          .
         android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        <activity android:name="com.wood.ocr_android.CameraActivity"
-            >
+        <activity android:name="com.wood.ocr_android.CameraActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -66,11 +68,12 @@ AndroidManifest
         </activity>
 
         <activity android:name="com.wood.ocr_android.UserActivity"
-            android:screenOrientation="portrait">
+                   android:screenOrientation="portrait">
         </activity>
-    </application>
-    </manifest>
-
+          .
+          .
+          .        
+          
 + 設置android:screenOrientation="portrait"時，可能會出現錯誤。需到File的Settings，左上角搜尋"Chrome OS"，將Activity is locked to an orientation(有兩個)取消勾選。
 
 Class
