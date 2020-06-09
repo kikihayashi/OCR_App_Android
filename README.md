@@ -4,8 +4,10 @@ OCR_App_Android
 
 About APP
 ---
-**最低需求**：API 19 (Android 4.4)\
-**測試機種**：SAMSUNG GALAXY A5 (Android 6.0.1)
+**最低需求：** API 19 (Android 4.4)\
+**測試機種：**SAMSUNG GALAXY A5 (Android 6.0.1)\
+**可識別文字：**\
+https://developers.google.com/vision/android/text-overview#recognized_languages
 
 build.grade(Project:OCR_Android)
 ---
@@ -74,24 +76,21 @@ AndroidManifest
 
 Class
 ---
-**Activity**：CameraActivity、UserActivity\
-**Adapter**：MyAdapter\
-**Dialog**：ToolDialog、ToolLayoutModel\
-**Mobile Vision Text API**：Ocr
+**Activity：**CameraActivity、UserActivity\
+**Adapter：**MyAdapter\
+**Dialog：**ToolDialog、ToolLayoutModel\
+**Mobile Vision Text API：**Ocr
 
 XML
 ---
-**activity_camera**：CameraActivity的layout\
-**activity_user**：UserActivity的layout\
-**tool_dialog**：ToolDialog的layout\
-**tool_item**：在MyAdapter會使用到的layout
+**activity_camera：**CameraActivity的layout\
+**activity_user：**UserActivity的layout\
+**tool_dialog：**ToolDialog的layout\
+**tool_item：**在MyAdapter會使用到的layout
 
 
 Source
 ---
-**可識別文字：**\
-https://developers.google.com/vision/android/text-overview#recognized_languages
-
 **客製Dialog：**\
 https://medium.com/@makkenasrinivasarao1/android-custom-dialog-with-list-of-items-ba1ab0e78e16
 
