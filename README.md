@@ -2,33 +2,102 @@ OCR_App_Android
 ===
 利用Mobile Vision Text API實現OCR功能
 
+build.grade(Project:OCR_Android)
+---
+    buildscript {
+      repositories {
+        google()
+        jcenter()
+        maven {
+            url "http://maven.google.com"
+        }
+        
+        .
+        .
+        .
+        
+    allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+
+build.grade(Module.app)
+---
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'com.google.android.gms:play-services-vision:20.0.0'
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
+
+AndroidManifest
+---
+    <?xml version="1.0" encoding="utf-8"?>
+    <manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="com.wood.ocr_android">
+
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ocr"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ocr"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <activity android:name="com.wood.ocr_android.CameraActivity"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.wood.ocr_android.UserActivity"
+            android:screenOrientation="portrait">
+        </activity>
+    </application>
+    </manifest>
+
 Class
 ---
-Activity：CameraActivity、UserActivity\
-Adapter：MyAdapter\
-Dialog：ToolDialog、ToolLayoutModel\
-Mobile Vision Text API：Ocr
+**Activity**：CameraActivity、UserActivity\
+**Adapter**：MyAdapter\
+**Dialog**：ToolDialog、ToolLayoutModel\
+**Mobile Vision Text API**：Ocr
 
 XML
 ---
-activity_camera：CameraActivity的layout\
-activity_user：UserActivity的layout\
-tool_dialog：ToolDialog的layout\
-tool_item：在MyAdapter會使用到的layout
+**activity_camera**：CameraActivity的layout\
+**activity_user**：UserActivity的layout\
+**tool_dialog**：ToolDialog的layout\
+**tool_item**：在MyAdapter會使用到的layout
 
 
 Source
 ---
-可識別文字：\
+**可識別文字：**\
 https://developers.google.com/vision/android/text-overview#recognized_languages
 
-客製Dialog：\
+**客製Dialog：**\
 https://medium.com/@makkenasrinivasarao1/android-custom-dialog-with-list-of-items-ba1ab0e78e16
 
-GridLayoutManager使用：\
+**GridLayoutManager使用：**\
 https://www.journaldev.com/13792/android-gridlayoutmanager-example
 
-如何使用Mobile Vision Text API：\
+**如何使用Mobile Vision Text API：**\
 https://codelabs.developers.google.com/codelabs/mobile-vision-ocr/#0 \
 https://www.youtube.com/watch?v=rXvtNlX_5E0 \
 https://www.youtube.com/watch?v=xoTKpstv9f0
+
+
+
+    
