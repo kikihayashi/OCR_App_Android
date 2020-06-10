@@ -6,7 +6,7 @@ About APP
 ---
 **最低需求：** API 19 (Android 4.4)\
 **測試機種：** SAMSUNG GALAXY A5 (Android 6.0.1)\
-**可識別文字：** https://developers.google.com/vision/android/text-overview#recognized_languages
+**識別文字：** https://developers.google.com/vision/android/text-overview#recognized_languages
 
 build.grade(Project:OCR_Android)
 ---
