@@ -1,9 +1,10 @@
-OCR_App_Android
+OCR
 ===
 利用Mobile Vision Text API實現OCR功能
 
 About APP
 ---
+**開發環境：** Android Studio \
 **最低需求：** API 19 (Android 4.4)\
 **測試機種：** SAMSUNG GALAXY A5 (Android 6.0.1)\
 **識別文字：** https://developers.google.com/vision/android/text-overview#recognized_languages
@@ -95,5 +96,6 @@ https://www.journaldev.com/13792/android-gridlayoutmanager-example
 
 **Mobile Vision Text API使用：**\
 https://codelabs.developers.google.com/codelabs/mobile-vision-ocr/#0 \
+https://www.luoow.com/dc_tw/100377642 \
 https://www.youtube.com/watch?v=rXvtNlX_5E0 \
 https://www.youtube.com/watch?v=xoTKpstv9f0
