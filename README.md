@@ -80,6 +80,10 @@ XML
 **tool_dialog：** ToolDialog的layout\
 **tool_item：** 在MyAdapter會使用到的layout
 
+Test Result
+---
+![image](https://github.com/kikihayashi/OCR_App_Android/blob/master/test.png) 
+
 
 Source
 ---
