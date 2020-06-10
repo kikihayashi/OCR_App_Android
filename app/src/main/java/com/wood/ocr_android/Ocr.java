@@ -78,14 +78,14 @@ public class Ocr extends Application {
     }
 
     //辨識Bitmap並轉成String
-    private String bitmapToString(Bitmap bitmap,Context context)
+    private String bitmapToString(Bitmap bitmap, Context context)
     {
         String b_str = null;
         TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build();
 
         if(!textRecognizer.isOperational())
         {
-            Toast.makeText(context,"無法得到文字",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"解析異常",Toast.LENGTH_SHORT).show();
         }
         else
         {
