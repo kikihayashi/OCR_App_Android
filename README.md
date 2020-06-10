@@ -16,11 +16,9 @@ build.grade(Project:OCR_Android)
         jcenter()
         maven {
             url "http://maven.google.com"
-        }
+        }    
         
-        .
-        .
-        .
+        ...
         
     allprojects {
     repositories {
@@ -34,9 +32,7 @@ build.grade(Project:OCR_Android)
 build.grade(Module.app)
 ---
     dependencies {
-        .
-        .
-        .
+        ...  
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.google.android.gms:play-services-vision:20.0.0'
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
@@ -53,9 +49,9 @@ AndroidManifest
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        .
-        .
-        .
+    
+      ...
+      
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name="com.wood.ocr_android.CameraActivity">
             <intent-filter>
@@ -84,6 +80,10 @@ XML
 **tool_dialog：** ToolDialog的layout\
 **tool_item：** 在MyAdapter會使用到的layout
 
+Test Result
+---
+![image](https://github.com/kikihayashi/OCR_App_Android/blob/master/test.png) 
+
 
 Source
 ---
@@ -97,7 +97,3 @@ https://www.journaldev.com/13792/android-gridlayoutmanager-example
 https://codelabs.developers.google.com/codelabs/mobile-vision-ocr/#0 \
 https://www.youtube.com/watch?v=rXvtNlX_5E0 \
 https://www.youtube.com/watch?v=xoTKpstv9f0
-
-
-
-    
