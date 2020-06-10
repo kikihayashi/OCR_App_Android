@@ -4,7 +4,7 @@ OCR
 
 About APP
 ---
-**開發環境：** Android Studio \
+**開發環境：** Android Studio 3.6.2 \
 **最低需求：** API 19 (Android 4.4)\
 **測試機種：** SAMSUNG GALAXY A5 (Android 6.0.1)\
 **識別文字：** https://developers.google.com/vision/android/text-overview#recognized_languages
