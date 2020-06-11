@@ -76,7 +76,6 @@ Class
 
 XML
 ---
-**activity_camera：** CameraActivity的layout\
 **activity_user：** UserActivity的layout\
 **tool_dialog：** ToolDialog的layout\
 **tool_item：** 在MyAdapter會使用到的layout
