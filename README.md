@@ -9,6 +9,10 @@ About APP
 **測試機種：** SAMSUNG GALAXY A5 (Android 6.0.1)\
 **識別文字：** https://developers.google.com/vision/android/text-overview#recognized_languages
 
+Flow Chart
+---
+**簡易流程圖：** [目前只有CameraActivity.class 和 UserActivity.class](https://github.com/kikihayashi/OCR_App_Android/blob/master/Flow%20Chart.pdf)
+
 build.grade(Project:OCR_Android)
 ---
     buildscript {
