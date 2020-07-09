@@ -1,6 +1,6 @@
 OCR
 ===
-利用Google的Mobile Vision Text API實現OCR功能
+使用Google的Mobile Vision Text API實現OCR功能
 
 About APP
 ---
