@@ -78,7 +78,7 @@ Class
 **Dialog：** ToolDialog、ToolLayoutModel\
 **Mobile Vision Text API：** Ocr
 
-XML
+XML 
 ---
 **activity_user：** UserActivity的layout\
 **tool_dialog：** ToolDialog的layout\
