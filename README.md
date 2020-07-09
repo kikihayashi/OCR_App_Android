@@ -5,8 +5,8 @@ OCR
 About APP
 ---
 **開發環境：** Android Studio 3.6.2 \
-**版本要求：** API 19 (Android 4.4)以上 \
-**測試機種：** SAMSUNG GALAXY A5 (Android 6.0.1)\
+**版本要求：** Android 4.4(API 19)以上 \
+**測試機種：** SAMSUNG GALAXY A5 -> Android 6.0.1(API 23)\
 **識別文字：** https://developers.google.com/vision/android/text-overview#recognized_languages
 
 Flow Chart
