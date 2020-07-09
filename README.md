@@ -69,7 +69,8 @@ AndroidManifest
                    android:screenOrientation="portrait">
         </activity>     
           
-+ 設置`android:screenOrientation="portrait"`時，可能會出現錯誤。需到File的Settings，左上角搜尋"Chrome OS"，將`Activity is locked to an orientation` (兩個)取消勾選。
++ 設置`android:screenOrientation="portrait"`時，可能會出現錯誤。\
+需到File的Settings，左上角搜尋"Chrome OS"，將`Activity is locked to an orientation` (兩個)取消勾選。
 
 Class
 ---
