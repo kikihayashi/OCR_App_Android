@@ -5,9 +5,13 @@ OCR
 About APP
 ---
 **開發環境：** Android Studio 3.6.2 \
-**最低需求：** API 19 (Android 4.4)\
+**版本要求：** API 19 (Android 4.4)以上 \
 **測試機種：** SAMSUNG GALAXY A5 (Android 6.0.1)\
 **識別文字：** https://developers.google.com/vision/android/text-overview#recognized_languages
+
+Flow Chart
+---
+**簡易流程圖：** [目前只有CameraActivity.class 和 UserActivity.class](https://github.com/kikihayashi/OCR_App_Android/blob/master/Flow%20Chart.pdf)
 
 build.grade(Project:OCR_Android)
 ---
@@ -76,7 +80,6 @@ Class
 
 XML
 ---
-**activity_camera：** CameraActivity的layout\
 **activity_user：** UserActivity的layout\
 **tool_dialog：** ToolDialog的layout\
 **tool_item：** 在MyAdapter會使用到的layout
