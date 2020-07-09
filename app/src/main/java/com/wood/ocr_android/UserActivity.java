@@ -1,9 +1,15 @@
 package com.wood.ocr_android;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
@@ -14,6 +20,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -31,6 +38,10 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
     private ToolDialog toolDialog;
     private static final String imagePath = Environment.getExternalStorageDirectory().toString()+"/OCRImage";//等於sdcard/OCRImage
 
+    private NotificationManager nfmg;
+    private NotificationCompat.Builder builder;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +53,8 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_user);
+
+
 
         Intent get_Camera_Intent = this.getIntent();//取得CameraActivity傳遞過來的Intent
         Uri uri_camera = get_Camera_Intent.getParcelableExtra("Uri");//取得Intent裡的uri_camera
@@ -119,7 +132,9 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
                 break;
 
             case 3://儲存文字為txt檔
+
                 saveText();
+
                 break;
         }
     }
@@ -130,8 +145,9 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
         String dateFormat = "yyyyMMdd_kkmmss";
         SimpleDateFormat df = new SimpleDateFormat(dateFormat);
         String today = df.format(mCal.getTime());
+        String fileName = "OCR("+today+").txt";
 
-        File file = new File(imagePath,"OCR("+today+").txt");
+        File file = new File(imagePath, fileName);
 
         try
         {
@@ -139,11 +155,45 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
             f_out.write(editText.getText().toString().getBytes());
             f_out.flush();
             f_out.close();
-            Toast.makeText(this,"已儲存至OCRImage裡",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"已存到我的裝置/OCRImage資料夾中",Toast.LENGTH_SHORT).show();
+            saveNotify(fileName);
         }
         catch (IOException e)
         {
             Toast.makeText(this,"儲存失敗",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void saveNotify(String name)
+    {
+        nfmg = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+
+        //處理Android 6以上的版本問題，設置好後在每個任務中多加setChannelId("OCR")
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            NotificationChannel notificationChannel =
+                    new NotificationChannel("OCR","custom",NotificationManager.IMPORTANCE_HIGH);
+            nfmg.createNotificationChannel(notificationChannel);
+        }
+
+        Intent intent = new Intent("android.intent.action.VIEW");
+        Uri mydir = Uri.parse("file://"+imagePath+"/"+name);
+        intent.addCategory("android.intent.category.DEFAULT");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setDataAndType(mydir, "text/plain");
+
+        TaskStackBuilder tsb = TaskStackBuilder.create(this);
+        tsb.addNextIntent(intent);
+        PendingIntent pendingIntent = tsb.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle("儲存成功")
+                .setContentText("已存到我的裝置/OCRImage資料夾中")
+                .setSmallIcon(R.drawable.ic_click)
+                .setChannelId("OCR")
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
+                .setColor(Color.BLACK);
+        nfmg.notify(1,builder.build());
     }
 }
