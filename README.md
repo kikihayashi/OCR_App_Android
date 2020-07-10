@@ -93,7 +93,8 @@ Test Result
 Source
 ---
 **客製Dialog：**\
-https://medium.com/@makkenasrinivasarao1/android-custom-dialog-with-list-of-items-ba1ab0e78e16
+https://medium.com/@makkenasrinivasarao1/android-custom-dialog-with-list-of-items-ba1ab0e78e16 \
+https://mrraybox.blogspot.com/2015/02/android-dialog-layout.html
 
 **GridLayoutManager使用：**\
 https://www.journaldev.com/13792/android-gridlayoutmanager-example
