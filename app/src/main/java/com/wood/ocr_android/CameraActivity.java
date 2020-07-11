@@ -86,7 +86,7 @@ public class CameraActivity extends AppCompatActivity {
 
             final Intent pictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//調用相機拍照功能
 
-            pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,outputFileDir);//傳遞outputFileDir。key等於MediaStore.EXTRA_OUTPUT
+            pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileDir);//傳遞outputFileDir。key等於MediaStore.EXTRA_OUTPUT
 
             if(pictureIntent.resolveActivity(getPackageManager()) != null)//確認Activity是否可收到Intent，不是null等於至少有一個可以
             {
@@ -111,12 +111,12 @@ public class CameraActivity extends AppCompatActivity {
 
         if(requestCode == 100 && resultCode == Activity.RESULT_OK)//如果請求碼等於100，且操作正常RESULT_OK
         {
-            camera_Uri_Intent.putExtra("Uri",outputFileDir);//傳遞outputFileDir，key等於Uri
+            camera_Uri_Intent.putExtra("Uri", outputFileDir);//傳遞outputFileDir，key等於Uri
         }
 
         else//請求碼不對or操作不正常(ex按返回鍵)
         {
-            Toast.makeText(getApplicationContext(),"請拍照以辨識文字",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"請拍照以辨識文字", Toast.LENGTH_SHORT).show();
         }
 
         startActivity(camera_Uri_Intent);//切換到UserActivity

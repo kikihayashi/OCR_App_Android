@@ -38,9 +38,8 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
     private ToolDialog toolDialog;
     private static final String imagePath = Environment.getExternalStorageDirectory().toString()+"/OCRImage";//等於sdcard/OCRImage
 
-    private NotificationManager nfmg;
+    private NotificationManager nm;
     private NotificationCompat.Builder builder;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +53,6 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
 
         setContentView(R.layout.activity_user);
 
-
-
         Intent get_Camera_Intent = this.getIntent();//取得CameraActivity傳遞過來的Intent
         Uri uri_camera = get_Camera_Intent.getParcelableExtra("Uri");//取得Intent裡的uri_camera
 
@@ -65,12 +62,12 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
             textDisplay = ocr.getImageString();//得到照片文字
         }
 
-        editText = findViewById(R.id.editText);
+        editText = findViewById(R.id.editText);//設置好editText view
         editText.setText(textDisplay);//將照片文字設置在editText上
         editText.setFocusable(false);//設置不可編輯editText，此指令會自動讓editText.setFocusableInTouchMode(false);
     }
 
-    //按鈕邏輯---------------------------------------------------------------------------------------
+    //按鈕邏輯
     public void restartCamera(View view)//重新拍照
     {
         //建立一個temp_intent物件，new Intent(放當前類別, 放要跳轉的類別.class)
@@ -79,20 +76,22 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
         this.finish();//結束UserActivity
     }
 
+    //按鈕邏輯
     public void openToolDialog(View view)//開啟功能表
     {
         //設定功能表的選單
         ArrayList<ToolLayoutModel> arrayList = new ArrayList<>();
-        arrayList.add(new ToolLayoutModel("Copy", R.drawable.copy, "#043730"));
-        arrayList.add(new ToolLayoutModel("Edit", R.drawable.edit, "#043730"));
-        arrayList.add(new ToolLayoutModel("Clear", R.drawable.clear, "#043730"));
-        arrayList.add(new ToolLayoutModel("Save", R.drawable.save, "#043730"));
+        arrayList.add(new ToolLayoutModel("Copy", R.drawable.copy, "#E80010"));
+        arrayList.add(new ToolLayoutModel("Edit", R.drawable.edit, "#326846"));
+        arrayList.add(new ToolLayoutModel("Clear", R.drawable.clear, "#FF9700"));
+        arrayList.add(new ToolLayoutModel("Save", R.drawable.save, "#0E3965"));
 
         //建立自製的MyAdapter物件
         MyAdapter myadapter = new MyAdapter(arrayList,this);
 
         //得到手機寬高
         DisplayMetrics metrics = new DisplayMetrics();
+
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int cellphone_w = metrics.widthPixels;
         int cellphone_h = metrics.heightPixels;
@@ -104,13 +103,13 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
         toolDialog.setCanceledOnTouchOutside(true);//設定碰到Dialog範圍以外，是否結束Dialog
     }
 
-    //實作MyAdapter.RecyclerViewItemClickListener介面裡的clickOnItem抽象方法--------------------------
+    //實作MyAdapter.RecyclerViewItemClickListener介面的clickOnItem抽象方法
     @Override
-    public void clickOnItem(int dataIndex)//點按tool執行以下東西
+    public void clickOnItem(int dataIndex)//開啟功能表後，點按tool執行以下東西
     {
         if (toolDialog != null)//如果customDialog有資料
         {
-            toolDialog.dismiss();
+            toolDialog.dismiss();//點擊功能表的按鈕後，將會關閉對話方塊
         }
 
         switch (dataIndex)
@@ -131,16 +130,15 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
                 editText.setText("");
                 break;
 
-            case 3://儲存文字為txt檔
-
+            case 3://儲存文字為txt檔，並發出通知訊息
                 saveText();
-
                 break;
         }
     }
 
     public void saveText()//另存新檔
     {
+        //以下為TXT檔的名稱設置
         Calendar mCal = Calendar.getInstance();
         String dateFormat = "yyyyMMdd_kkmmss";
         SimpleDateFormat df = new SimpleDateFormat(dateFormat);
@@ -156,7 +154,7 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
             f_out.flush();
             f_out.close();
             Toast.makeText(this,"已存到我的裝置/OCRImage資料夾中",Toast.LENGTH_SHORT).show();
-            saveNotify(fileName);
+            sendNotify(fileName);//發出通知訊息
         }
         catch (IOException e)
         {
@@ -164,23 +162,24 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
         }
     }
 
-    public void saveNotify(String name)
+    public void sendNotify(String name)//發出通知訊息
     {
-        nfmg = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 
         //處理Android 6以上的版本問題，設置好後在每個任務中多加setChannelId("OCR")
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {
             NotificationChannel notificationChannel =
                     new NotificationChannel("OCR","custom",NotificationManager.IMPORTANCE_HIGH);
-            nfmg.createNotificationChannel(notificationChannel);
+            nm.createNotificationChannel(notificationChannel);
         }
 
-        Intent intent = new Intent("android.intent.action.VIEW");
-        Uri mydir = Uri.parse("file://"+imagePath+"/"+name);
+        //當點擊通知訊息時，將會開啟儲存好的TXT檔
+        Intent intent = new Intent("android.intent.action.VIEW");//implicit intent
+        Uri filePath = Uri.parse("file://"+imagePath+"/"+name);
         intent.addCategory("android.intent.category.DEFAULT");
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setDataAndType(mydir, "text/plain");
+        intent.setDataAndType(filePath, "text/plain");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//可不加，但在不同Activity啟動時，一定要加
 
         TaskStackBuilder tsb = TaskStackBuilder.create(this);
         tsb.addNextIntent(intent);
@@ -194,6 +193,7 @@ public class UserActivity extends AppCompatActivity implements MyAdapter.Recycle
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .setColor(Color.BLACK);
-        nfmg.notify(1,builder.build());
+
+        nm.notify(1,builder.build());
     }
 }

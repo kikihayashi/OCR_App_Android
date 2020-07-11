@@ -24,26 +24,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
         recyclerViewItemClickListener = listener;
     }
 
+    //存之後需要用到的View
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
-        private TextView tool_TV;
-        private ImageView tool_IV;
         private CardView tool_CV;
+        private ImageView tool_IV;
+        private TextView tool_TV;
 
-        public MyViewHolder(View v)//定義RecyclerView上的view
+        public MyViewHolder(View v)//定義tool_dialog.xml中RecyclerView上的view(tool_item.xml)
         {
             super(v);
-            tool_TV = v.findViewById(R.id.toolTextView);
-            tool_IV = v.findViewById(R.id.toolImageView);
             tool_CV = v.findViewById(R.id.toolCardView);
+            tool_IV = v.findViewById(R.id.toolImageView);
+            tool_TV = v.findViewById(R.id.toolTextView);
             v.setOnClickListener(this);
         }
 
-        public void setData(ToolLayoutModel tool_Model)//將tool_Model的資料設置到tool_item.xml裡的TextView、ImageView上
+        public void setData(ToolLayoutModel toolModel)//將toolModel的資料設置到tool_item.xml裡的CardView、ImageView、TextView上
         {
-            tool_TV.setText(tool_Model.text);
-            tool_IV.setImageResource(tool_Model.drawable);
-            tool_CV.setBackgroundColor(Color.parseColor(tool_Model.color));
+            tool_CV.setBackgroundColor(Color.parseColor(toolModel.color));
+            tool_IV.setImageResource(toolModel.drawable);
+            tool_TV.setText(toolModel.text);
         }
 
         @Override
@@ -67,7 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
     }
 
     @Override
-    //處理資料的順序
+    //設置ViewHolder裡的View
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, final int position)
     {
         holder.setData(toolModelList.get(position));//將選單名稱(資料)設置好
