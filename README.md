@@ -87,7 +87,7 @@ XML
 
 Test Result
 ---
-![image](https://github.com/kikihayashi/OCR_App_Android/blob/master/test.png) 
+![image](https://github.com/kikihayashi/OCR_App_Android/blob/master/test0.png) 
 
 
 Source
