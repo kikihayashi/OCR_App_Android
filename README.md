@@ -9,6 +9,10 @@ About APP
 **測試機種：** SAMSUNG GALAXY A5 -> Android 6.0.1(API 23)\
 **識別文字：** https://developers.google.com/vision/android/text-overview#recognized_languages
 
+執行畫面
+---
+![image](https://github.com/kikihayashi/OCR_App_Android/blob/master/test0.png) 
+
 Flow Chart
 ---
 **簡易流程圖：** [目前有CameraActivity.class 和 UserActivity.class](https://github.com/kikihayashi/OCR_App_Android/blob/master/Flow%20Chart.pdf)
@@ -86,10 +90,6 @@ XML
 **activity_user：** UserActivity的layout\
 **tool_dialog：** ToolDialog的layout\
 **tool_item：** tool_dialog中RecyclerView上的layout
-
-Test Result
----
-![image](https://github.com/kikihayashi/OCR_App_Android/blob/master/test0.png) 
 
 Source
 ---
