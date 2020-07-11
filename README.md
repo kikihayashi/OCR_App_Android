@@ -1,6 +1,6 @@
 OCR
 ===
-利用Mobile Vision Text API實現OCR功能
+使用Google的Mobile Vision Text API實現OCR功能
 
 About APP
 ---
@@ -69,7 +69,8 @@ AndroidManifest
                    android:screenOrientation="portrait">
         </activity>     
           
-+ 設置`android:screenOrientation="portrait"`時，可能會出現錯誤。需到File的Settings，左上角搜尋"Chrome OS"，將`Activity is locked to an orientation` (兩個)取消勾選。
++ 設置`android:screenOrientation="portrait"`時，可能會出現錯誤。\
+需到File的Settings，左上角搜尋"Chrome OS"，將`Activity is locked to an orientation` (兩個)取消勾選。
 
 Class
 ---
@@ -78,7 +79,7 @@ Class
 **Dialog：** ToolDialog、ToolLayoutModel\
 **Mobile Vision Text API：** Ocr
 
-XML
+XML 
 ---
 **activity_user：** UserActivity的layout\
 **tool_dialog：** ToolDialog的layout\
@@ -92,7 +93,8 @@ Test Result
 Source
 ---
 **客製Dialog：**\
-https://medium.com/@makkenasrinivasarao1/android-custom-dialog-with-list-of-items-ba1ab0e78e16
+https://medium.com/@makkenasrinivasarao1/android-custom-dialog-with-list-of-items-ba1ab0e78e16 \
+https://mrraybox.blogspot.com/2015/02/android-dialog-layout.html
 
 **GridLayoutManager使用：**\
 https://www.journaldev.com/13792/android-gridlayoutmanager-example
