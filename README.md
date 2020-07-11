@@ -1,6 +1,6 @@
-OCR
+OCR_App_Android
 ===
-使用Google的Mobile Vision Text API實現OCR功能
+本專案使用Google的Mobile Vision Text API實現OCR(拍照圖片轉文字)功能
 
 About APP
 ---
