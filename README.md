@@ -13,9 +13,7 @@ About APP
 ---
 ![image](https://github.com/kikihayashi/OCR_App_Android/blob/master/test0.png) 
 
-Flow Chart
----
-**簡易流程圖：** [目前有CameraActivity.class 和 UserActivity.class](https://github.com/kikihayashi/OCR_App_Android/blob/master/Flow%20Chart.pdf)
+
 
 build.grade(Project:OCR_Android)
 ---
@@ -76,20 +74,23 @@ AndroidManifest
 + 設置`android:screenOrientation="portrait"`時，可能會出現錯誤。\
 需到File的Settings，左上角搜尋"Chrome OS"，將`Activity is locked to an orientation` (兩個)取消勾選。
 
-Class
+設計概念
 ---
-**CameraActivity：** 負責處理"開啟照相機"的動作(內部有權限檢查，結束後將會切換到UserActivity) \
-**UserActivity：** 取得CameraActivity傳遞過來的資料，並使用Ocr物件得到照片文字 \
-**MyAdapter：** 負責處理activity_user右上角"對話框"的顯示資料(會使用到ToolLayoutModel物件) \
-**ToolDialog：** 負責顯示對話框(會用到UserActivity、MyAdapter) \
-**ToolLayoutModel：** 對話框項目，內部設置圖片、文字、背景顏色 \
-**Ocr：** Mobile Vision Text API，負責處理圖片轉文字的相關動作
+**Flow Chart(簡易流程圖)：** [目前有CameraActivity.class 和 UserActivity.class](https://github.com/kikihayashi/OCR_App_Android/blob/master/Flow%20Chart.pdf) \
+以下將介紹專案中每個程式的功能。
 
-XML 
----
-**activity_user：** UserActivity的layout\
-**tool_dialog：** ToolDialog的layout\
-**tool_item：** tool_dialog中RecyclerView上的layout
+**Class**\
+CameraActivity：程式最初進入點，負責處理"開啟照相機"的動作(內部有權限檢查，結束後將會切換到UserActivity) \
+UserActivity：取得CameraActivity傳遞過來的資料，並使用Ocr物件得到照片文字 \
+MyAdapter：負責處理"對話框"的顯示資料(會使用到ToolLayoutModel物件) \
+ToolDialog：負責顯示對話框(會用到UserActivity、MyAdapter) \
+ToolLayoutModel：對話框項目，內部設置圖片、文字、背景顏色 \
+Ocr：負責處理圖片轉文字的相關動作(使用Mobile Vision Text API)
+
+**XML**\
+activity_user：使用者畫面(UserActivity的layout) \
+tool_dialog：對話框(ToolDialog的layout) \
+tool_item：對話框項目(tool_dialog中RecyclerView上的layout)
 
 Source
 ---
