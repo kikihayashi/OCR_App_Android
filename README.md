@@ -7,8 +7,9 @@ About APP
 **開發環境：** Android Studio 3.6.2 \
 **版本要求：** Android 4.4(API 19)以上 \
 **測試機種：** SAMSUNG GALAXY A5 -> Android 6.0.1(API 23)\
-**識別文字：** https://developers.google.com/vision/android/text-overview#recognized_languages \
-**APK安裝檔：** https://github.com/kikihayashi/OCR_App_Android/raw/master/OCR_App_Android.apk
+**安裝檔案：** [此為Debug APK檔](https://github.com/kikihayashi/OCR_App_Android/raw/master/OCR_App_Android.apk) \
+**識別文字：** https://developers.google.com/vision/android/text-overview#recognized_languages 
+
 
 執行畫面
 ---
